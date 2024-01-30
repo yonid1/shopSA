@@ -1,0 +1,35 @@
+
+
+
+ .product-item {
+  border: 10px solid #2c0505;
+  margin: 10px;
+  padding: 10px;
+  
+  text-align: center;
+  transform: scale(0.8); 
+}
+
+.product-item:hover {
+  transform: scale(1.05);
+}
+
+.product-item img {
+  width: 10%;
+  height: auto;
+  
+} 
+
+.product-item button {
+  background-color: #61dafb;
+  color: #ffffff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.product-item button:hover {
+  background-color: #2f81c0;
+}  

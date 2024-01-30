@@ -2,37 +2,118 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  background-color: #a2b9eb;
+  padding: 20px;
+  color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* .products-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+.product-item {
+  border: 10px solid #502a2a;
+  margin: 10px;
+  padding: 10px;
+  max-width: 30px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+} */
+
+/* .product-item:hover {
+  transform: scale(1.05);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.product-item img {
+  width: 100%;
+  height: auto;
+} */
+
+.sorting-options {
+  margin-bottom: 20px;
 }
+
+.cart-container {
+  position: absolute;
+  left: 10; /* Positioning on the left side */
+  top: 20px; /* Adjust as needed */
+}
+
+.cart-icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+
+}
+
+.cart-items {
+  display: none; /* Initially hide */
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 150px; /* Adjust as needed */
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.cart-icon:hover + .cart-items {
+  display: block; /* Show on hover */
+}
+.cart-icon:after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  height: 20px;
+  background-color: #000;
+  top: 5px;
+  border-radius: 2px;
+}
+.cart-icon:before {
+  left: 5px;
+  transform: rotate(45deg);
+}
+
+.cart-icon:after {
+  right: 5px;
+  transform: rotate(-45deg);
+}
+
+.cart-icon .cart-handle {
+  width: 20px;
+  height: 4px;
+  background-color: #000;
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  border-radius: 2px;
+}
+
+
+
+.cart {
+  width: 30px;
+  height: 30px;
+  background-color: #848fa4;
+  color: #ffffff;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.cart h2 {
+  margin-bottom: 10px;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart li {
+  margin-bottom: 5px;
+}
+

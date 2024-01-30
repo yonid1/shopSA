@@ -1,0 +1,24 @@
+.home-products-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .home-product-item {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .home-product-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .home-product-item img {
+    max-width: 100px;
+    height: auto;
+  }
+  
