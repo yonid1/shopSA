@@ -1,19 +1,22 @@
+
 .product-details {
-  max-width: 300px;
+  max-width: 90%;
   margin: auto;
   text-align: center;
 }
 
 .product-details h2 {
   color: #c7ccd6;
+  font-size: 18px; 
 }
 
 .product-details p {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .product-details img {
-  width: 100%;
+  max-width: 10%;
+  max-height: 300px;
   height: auto;
   display: block;
   margin: auto;
@@ -22,13 +25,27 @@
 .product-details button {
   background-color: #61dafb;
   color: #ffffff;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   margin-top: 15px;
+  border-radius: 5px;
 }
 
 .product-details button:hover {
   background-color: #2f81c0;
+}
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 20px 0; 
+  }
+
+  .logo-container {
+    width: 50%;
+  }
+
+  .cart-container {
+    width: 50%; 
+  }
 }

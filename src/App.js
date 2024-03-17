@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import Home from './Home'; 
 import Products from './Products'; 
 import ProductDetails from './ProductDetails';
+import Header from './Header';
+import Cart from './Cart';
+import Login from './Login';
+import Register from './Register';
 
-const productsData = [
-  { id: 1, name: 'Product A', category: 'Electronics', price: 20 },
-  { id: 2, name: 'Product B', category: 'Clothing', price: 30 },
-  { id: 3, name: 'Product C', category: 'Electronics', price: 25 },
-  // Add more products as needed
-];
+
 
 function App() {
+  const [productsData, setProductsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState(productsData);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortBy, setSortBy] = useState('');
   const [cart, setCart] = useState([]); 
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/products")
+      .then(response => response.json())
+      .then(data => {
+        setProductsData(data);
+        setFilteredProducts(data);
+      })
+      .catch(error => console.error('Error fetching products:', error))
+  }, [])
 
   const handleSearch = (event) => {
     const term = event.target.value;
@@ -43,46 +53,33 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <h1>מערכת חנות מוצרים</h1>
-          <div class="cart-container">
-
-          <div className="cart-icon">
-            <h2>סל קניות</h2>
-            <ul>
-              {cart.map((item, index) => (
-                <div className='cart'>
-                  
-                  <div key={index}>{item.name}</div>
-                   </div>
-              ))}
-            </ul>
-          </div>
-          </div>
-          <input
-            type="text"
-            placeholder="חיפוש מוצרים"
-            value={searchTerm}
-            onChange={handleSearch}
-          />
-          <div className="sorting-options">
-            <span>מיין לפי: </span>
-            <button onClick={() => handleSort('price')}>מחיר</button>
-            <button onClick={() => handleSort('name')}>שם</button>
-          </div>
-          {/* <div> */}
+    <Router basename=""> {/* Add basename here */}
+      <div>
+        <Header cart={cart} />
+        <div className="App">
+          <div className="App-product">
+            <input
+              type="text"
+              placeholder="חיפוש מוצרים"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            <div className="sorting-options">
+              <span>מיין לפי: </span>
+              <button onClick={() => handleSort('price')}>מחיר</button>
+              <button onClick={() => handleSort('name')}>שם</button>
+            </div>
             <Routes>
               <Route path="/" element={<Home filteredProducts={filteredProducts} />} />
-              <Route
-                path="/products"
-                element={<Products filteredProducts={filteredProducts} addToCart={addToCart} />}
-              />
+              <Route path="/products" element={<Products filteredProducts={filteredProducts} addToCart={addToCart} />} />
               <Route path="/product/:productId" element={<ProductDetails products={productsData} addToCart={addToCart} />} />
+              <Route path="/cart" element={<Cart cart={cart} />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+
             </Routes>
-          {/* </div>     */}
-        </header>
+          </div>
+        </div>
       </div>
     </Router>
   );
