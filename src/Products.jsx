@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Products.css';
+import './style/Products.css';
 
 const Products = ({ filteredProducts, addToCart }) => {
   return (

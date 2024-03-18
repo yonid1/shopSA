@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import './style/Header.css';
 import Cart from './Cart';
 // import ShoppingCartIcon from './ShoppingCartIcon'; // נניח שקיים רכיב ShoppingCartIcon
 
