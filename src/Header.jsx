@@ -15,9 +15,9 @@ function Header({ cart, setCart ,products }) {
         {/* <img src="לינק ללוגו החנות" alt="לוגו החנות" /> */}
         {/* </Link> */}
       </div>
-
+<Link to= "/">  
       <h1>מערכת חנות מוצרים</h1>
-
+</Link>
       <div className="cart-container">
         <Link to="/cart" className="cart-button">
           סל קניות
