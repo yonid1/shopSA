@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './style/Login.css'
+import { useNavigate  } from 'react-router-dom';
+
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,9 +15,33 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const serverUrl = 'http://localhost:5000';
+    
+    try {
+      const response = await fetch(`${serverUrl}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const token = data.token;
+        localStorage.setItem('token', token);
+
+        navigate('/');
+        console.log('The login was successful!');
+      } else {
+        console.error('Login error');
+      }
+    } catch (error) { 
+      console.error('Error executing the request:', error);
+    }
   };
 
   return (

@@ -6,7 +6,7 @@ import Cart from './Cart';
 
 function Header({ cart, setCart ,products }) {
 
- 
+    
 
   return (
     <header className="header">
